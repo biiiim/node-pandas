@@ -73,6 +73,24 @@ class NodeDataFrame extends Array { // Object => df[0] => undefined
             }) 
         })
     }
+    
+    getColumnStats(colName) {// call df.getColumnStats(colName) to get counts of how many times each value occurs
+        var counts = {};
+        Object.values(df.data).forEach(val => {
+          if(typeof counts[val[colName]] == 'undefined'){counts[val[colName]] = 0;}
+          counts[val[colName]]++;
+        });
+        return counts;
+    }
+
+    getAllColumnStats() {// call df.getAllColumnStats() to get counts for each column on how many times each value occurs
+        var counts = {};
+        Object.values(this.columns).forEach(val => {
+          counts[val] = this.getColumnStats(val);
+        });
+        return counts;
+    }
+
 }
 
 // https://javascript.info/mixins (class, Object)
