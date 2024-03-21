@@ -19,11 +19,11 @@ function getTransformedDataList(dataList, columns) {
                 newDataList.push(obj)
                 index.push(i)
             }
+            dataList = newDataList
         } else if(dType == 'Object') {
             // Nothing
         }
 
-        dataList = newDataList
     }
 
     return {index, dataList}
